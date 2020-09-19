@@ -1,10 +1,4 @@
-const fb = document.getElementsByClassName('to_facebook');
-const tw = document.getElementsByClassName('to_twitter');
-const cp = document.getElementsByClassName('copy_link');
-const source = document.getElementById('source');
-const download = document.getElementById('download');
-const img = document.getElementById('result_image');
-
+// for tabs
 function openTab(evt, tabName) {
   console.log(evt);
   let i, tabcontent, tablinks;
@@ -19,134 +13,89 @@ function openTab(evt, tabName) {
   document.getElementById(tabName).style.display = "block";
   evt.currentTarget.className += " active";
 }
+
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
 
-if (fb) {
-  Array.from(fb).forEach(
-    fb => fb.addEventListener("click", () => {
-      window.open("https://www.facebook.com/sharer/sharer.php"
-        + "?u=" + encodeURIComponent(window.location.href)
-      );
-    })
-  )
+
+// for redirecting community
+function openSite(site) {
+  console.log('click');
+  if (site === 'fb') {
+    window.open("https://www.facebook.com/sharer/sharer.php"
+      + "?u=" + encodeURIComponent(window.location.href)
+    )
+  } else if (site === 'tw') {
+    window.open("https://twitter.com/intent/tweet?="
+      + "&url=" + encodeURIComponent(window.location.href)
+    );
+  } else if (site === 'ainizer') {
+    // Todo
+  }
 }
 
-if (tw) {
-  Array.from(tw).forEach(
-    tw => tw.addEventListener("click", () => {
-      window.open("https://twitter.com/intent/tweet?="
-        + "&url=" + encodeURIComponent(window.location.href)
-      );
-    })
-  )
-}
-
-if (cp) {
-  Array.from(cp).forEach(
-    cp => cp.addEventListener("click", copyToClipboard)
-  )
-}
-
-if (source) {
-  source.addEventListener('change', changeInputImage)
-}
-
-if (download) {
-  download.addEventListener('click', downloadImage);
-}
-
-if (img) {
-  img.addEventListener('change', function (event) {
-    download.removeAttribute('disabled');
-  })
-}
-function downloadImage() {
-  const a = document.createElement('a');
-  a.style.cssText = "display: none;";
-  a.href = img.src;
-  a.download = 'result.png';
-  document.body.appendChild(a);
-  a.click();
-}
-
-function changeInputImage(event) {
-  const file = event.target.files[0];
-  const reader = new FileReader();
-
-  document.getElementById('filename').innerText = file.name;
-  document.getElementById('submit').removeAttribute('disabled');
-  reader.onload = (progressEvent) => {
-    document.getElementById('your_image').src = progressEvent.target.result;
-  };
-
-  reader.readAsDataURL(file);
-}
-
-function copyToClipboard() {
-  var t = document.createElement("textarea");
-  document.body.appendChild(t);
-  t.value = document.location.href;
-  t.select();
-  document.execCommand('copy');
-  document.body.removeChild(t);
-}
-
-function uploadFile() {
-  const input = document.getElementById('source');
-  input.click();
-}
+// Raw tab submit
 
 document.getElementById("submit").onclick = () => {
-  document.getElementById("submit").setAttribute('disabled', '');
-  // document.getElementById("errorbox").innerHTML = "";
-  const formData = new FormData();
-  try {
-    if (document.querySelector('input[name=face]:checked') == null) {
-      throw Error("Please Choose face type");
-    }
-    else if (document.getElementById('source').files[0] === undefined) {
-      throw Error("Please upload image file");
-    }
-  } catch (e) {
-    // document.getElementById("errorbox").innerHTML = e;
-    document.getElementById("submit").removeAttribute('disabled');
-    alert(e);
-    return;
-  }
+  document.getElementById("submit").disabled = true;
+  // document.getElementById("errorbox").innerHTML = ""
 
-  const check_model = document.querySelector('input[name=face]:checked').value
-  const source = document.getElementById('source').files[0]
+  //  const loading = document.getElementById("statusBox");
+  //loading.innerHTML = "Loading..."
+  waiting();
 
-  formData.append('source', source)
-  formData.append('check_model', check_model)
+  const texts = document.getElementById("box_input").value.split('.').filter(text => text);
+  const is_tokenized = false // document.getElementById("tokenized").checked
+
+  const data = {
+    id: '',
+    texts,
+    is_tokenized
+  };
+
+  console.log(data.texts[0]);
 
   fetch(
-    'https://master-stargan-v2-psi1104.endpoint.ainize.ai//predict',
+    `https://korean-bert-as-service-gkswjdzz.endpoint.ainize.ai/encode`,
     {
       method: 'POST',
-      body: formData,
+      headers: { 'Content-Type': 'application/json', },
+      body: JSON.stringify(data),
     }
   )
     .then(async response => {
       if (response.status == 200) {
-        return response
-      }
-      else if (response.status == 413) {
-        throw Error("This image file is larger than 1MB.")
+        console.log(response.status)
+        return (await response.json());
       }
       else {
-        throw Error((await response.clone().json()).message)
+        throw Error(JSON.stringify(await response.json()))
       }
     })
-    .then(response => response.blob())
-    .then(blob => URL.createObjectURL(blob))
-    .then(imageURL => {
-      document.getElementById("result_image").src = imageURL;
-      document.getElementById("download").removeAttribute('disabled');
+    .then(result => {
+      document.getElementById("box_output").value = JSON.stringify(result);
+      stopWaiting();
+
+      document.getElementById("submit").disabled = false
     })
     .catch(e => {
-      document.getElementById("download").removeAttribute('disabled');
-      alert(e)
+      // document.getElementById("errorbox").innerHTML = e;
+      document.getElementById("submit").disabled = false;
+      stopWaiting();
     })
+  console.log("out")
+}
+
+function waiting() {
+  var spining = document.getElementById("loader");
+  const submit = document.getElementById("submit_text");
+  submit.style.display = 'none';
+  spining.style.display = 'inline-block';
+}
+
+function stopWaiting() {
+  var spining = document.getElementById("loader");
+  const submit = document.getElementById("submit_text");
+  submit.style.display = 'inline-block';
+  spining.style.display = "none";
 }
