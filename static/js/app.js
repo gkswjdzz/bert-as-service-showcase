@@ -20,7 +20,6 @@ document.getElementById("defaultOpen").click();
 
 // for redirecting community
 function openSite(site) {
-  console.log('click');
   if (site === 'fb') {
     window.open("https://www.facebook.com/sharer/sharer.php"
       + "?u=" + encodeURIComponent(window.location.href)
@@ -29,8 +28,6 @@ function openSite(site) {
     window.open("https://twitter.com/intent/tweet?="
       + "&url=" + encodeURIComponent(window.location.href)
     );
-  } else if (site === 'ainizer') {
-    // Todo
   }
 }
 

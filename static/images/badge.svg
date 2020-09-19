@@ -1,5 +1,4 @@
 <svg width="254" height="80" viewBox="0 0 254 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <a href="https://join.slack.com/t/ainetwork-dev/shared_invite/zt-c89mb8z9-IqaCsNmsNLXKNylKXrJTTg">
                 <path
                     d="M0 8C0 3.58172 3.58172 0 8 0H246C250.418 0 254 3.58172 254 8V72C254 76.4183 250.418 80 246 80H8C3.58172 80 0 76.4183 0 72V8Z"
                     fill="#1A1B1F" />
@@ -84,5 +83,4 @@
                         <rect width="66" height="48" fill="white" transform="translate(177 16)" />
                     </clipPath>
                 </defs>
-            </a>
         </svg>
