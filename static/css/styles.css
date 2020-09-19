@@ -1,79 +1,5 @@
 @import 'design.css';
 
-body {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: normal;
-
-  color: #FFFFFF;
-  background-color: #3A3A3A;
-
-  margin: auto;
-}
-
-.type input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-
-  border-radius: 10px;
-  width: 16px;
-  height: 16px;
-
-  background-color: rgba(128, 128, 128, 0.2);
-  outline: none;
-
-  position: relative;
-  top: 2px;
-}
-.type label {
-  transition: 0.2s all linear;
-}
-.type input:checked {
-  border: 4px solid rgb(67,67,68);
-  background-color: #AD87FF;
-}
-
-span.br {
-  display: block;
-  margin-bottom: 0em;
-}
-
-except {
-  font-size: 12px;
-  line-height: 20px;
-
-  text-transform: uppercase;
-}
-
-#header {
-  font-size: 12px;
-  line-height: 20px;
-  font-weight: 600;
-  color: #FFFFFF;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  margin: 38px 50.5px 38px 0;
-}
-
-#header svg {
-  margin-right: 5.5px;
-}
-
-#header .github {
-  display: flex;
-  align-items: center;
-  margin-right: 40px;
-}
-
-#header .ainize {
-  display: flex;
-  align-items: center;
-}
-
 #container {
   display: flex;
   flex-direction: column;
@@ -94,26 +20,8 @@ except {
 #title .title {
   margin: 10px 0;
 }
-#upload {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-self: stretch;
-  /*width: 90%;*/
-}
 
-.upload_wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.upload_wrapper h3 {
-  padding-left: 20px;
-}
-
-#tabs {
+#tabcontents {
   padding: 30px 60px;
   background-color: #1A1B1F;
   background-color: rgba( 0, 0, 0, 0.2 );
@@ -138,68 +46,6 @@ except {
 .btn.download[disabled] {
   opacity: 0.2;
   pointer-events:none;
-}
-
-.sample_image {
-  margin: 60px 0 0 0;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
-  text-align: center;
-}
-
-.sample_image .img {
-  display: flex;
-  flex-direction: column;
-}
-
-.style_title.bold {
-  align-self: center;
-  align-items: center;
-  align-content: center;
-}
-
-.sample_image p1 {
-  padding-bottom: 10px;
-}
-
-.sample_image .sample {
-  height: 256px;
-  width: 256px;
-  background-color: #4F4F4F;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.sample_image .union {
-  margin: 57px;
-}
-
-#your_image {
-  width: 256px;
-  height: 256px;
-}
-#result {
-  padding: 48px 0 0 0;
-}
-
-#footer {
-  font-size: 12px;
-  line-height: 20px;
-  font-weight: 600;
-  color: #8E8E94;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
 }
 
 .share h2 {
@@ -231,34 +77,9 @@ svg:hover .tw {
   fill: #43D0FF;
 }
 
-#footer svg {
-  margin-right: 5.5px;
-}
-
-#footer .ainize {
+#tabs {
   display: flex;
-  align-items: center;
-  margin-right: 40px;
-}
-
-#footer .github {
-  display: flex;
-  align-items: center;
-}
-
-#badge svg {
-  position: fixed;
-  bottom: 40px;
-  right: 40px;
-
-  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.25));
-}
-
-/* Style the tab */
-.tab {
-  /* overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1; */
+  flex-direction: column;
 }
 
 /* Style the buttons that are used to open the tab content */
@@ -272,16 +93,6 @@ svg:hover .tw {
   transition: 0.3s;
 }
 
-/* Change background color of buttons on hover */
-.tab button:hover {
-  /* background-color: #ddd; */
-}
-
-/* Create an active/current tablink class */
-.tab button.active {
-  /* background-color: #ccc; */
-}
-
 /* Style the tab content */
 .tabcontent {
   display: none;
@@ -292,10 +103,4 @@ svg:hover .tw {
 
 .tabcontent {
   animation: fadeEffect 1s; /* Fading effect takes 1 second */
-}
-
-/* Go from zero to full opacity */
-@keyframes fadeEffect {
-  from {opacity: 0;}
-  to {opacity: 1;}
 }
