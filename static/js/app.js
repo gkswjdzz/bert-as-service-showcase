@@ -38,22 +38,17 @@ function openSite(site) {
 
 document.getElementById("submit").onclick = () => {
   document.getElementById("submit").disabled = true;
-  // document.getElementById("errorbox").innerHTML = ""
 
-  //  const loading = document.getElementById("statusBox");
-  //loading.innerHTML = "Loading..."
   waiting();
 
   const texts = document.getElementById("box_input").value.split('.').filter(text => text);
-  const is_tokenized = false // document.getElementById("tokenized").checked
+  const is_tokenized = false
 
   const data = {
     id: '',
     texts,
     is_tokenized
   };
-
-  console.log(data.texts[0]);
 
   fetch(
     `https://korean-bert-as-service-gkswjdzz.endpoint.ainize.ai/encode`,
@@ -79,11 +74,9 @@ document.getElementById("submit").onclick = () => {
       document.getElementById("submit").disabled = false
     })
     .catch(e => {
-      // document.getElementById("errorbox").innerHTML = e;
       document.getElementById("submit").disabled = false;
       stopWaiting();
     })
-  console.log("out")
 }
 
 function waiting() {
