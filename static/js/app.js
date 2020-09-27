@@ -1,6 +1,5 @@
 // for tabs
 function openTab(evt, tabName) {
-  console.log(evt);
   let i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
@@ -57,7 +56,6 @@ document.getElementById("submit").onclick = () => {
   )
     .then(async response => {
       if (response.status == 200) {
-        console.log(response.status)
         return (await response.json());
       }
       else {
@@ -65,7 +63,15 @@ document.getElementById("submit").onclick = () => {
       }
     })
     .then(result => {
+      if (data.is_tokenized) {
+        data.is_tokenized = 'True';
+      } else {
+        data.is_tokenized = 'False';
+      }
       document.getElementById("box_output").value = JSON.stringify(result);
+      document.getElementById("code_result").innerText = 
+      `r = requests.post('https://korean-bert-as-service-gkswjdzz.endpoint.ainize.ai/encode', json=${JSON.stringify(data)})`
+      
       stopWaiting();
 
       document.getElementById("submit").disabled = false
