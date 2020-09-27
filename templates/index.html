@@ -76,26 +76,25 @@
                     <div class="box">
                         <p1>Input</p1>
                         <div class="box inputs">
-                            <input id="box_input" class="input_text" value="여기에 단어/문장을 입력해주세요." />
-                            <div id="submit" class="btn">
-                                <p1 id="submit_text">submit</p1>
-                                <div id="loader" style="display: none;"></div>
+                            <input class="input_text box_input" value="여기에 단어/문장을 입력해주세요." />
+                            <div class="btn submit">
+                                <p1 class="submit_text">submit</p1>
+                                <div class="loader" style="display: none;"></div>
                             </div>
                         </div>
                         <p1>Result</p1>
-                        <textarea id="box_output" class="input_text" rows="4" cols="50" disabled>
+                        <textarea class="input_text box_output" rows="4" cols="50" disabled>
                         </textarea>
                     </div>
 
                     <p1>Code</p1>
                     <div class="box">
                         <div id="code_output" class="input_text">
-                            <code id="code_result" class="language-python">
+                            <code class="code_result language-python">
                                 requests.post('https://korean-bert-as-service-gkswjdzz.endpoint.ainize.ai/encode', json={"texts":["HERE"],"id":"","is_tokenized":"False"})
                             </code>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

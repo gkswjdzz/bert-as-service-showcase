@@ -60,11 +60,11 @@ textarea {
   width: 1000px;
 }
 
-#raw .btn {
+.tabcontent .btn {
   width: 128px;
   height: 70px;
 }
-#raw .box {
+.tabcontent .box {
   padding: 36px 40px;
   background-color: #3a3a3a;
 
@@ -75,7 +75,7 @@ textarea {
   align-content: center;
 }
 
-#raw .box.inputs {
+.tabcontent .box.inputs {
   padding: 0;
   width: 100%;
 
@@ -84,7 +84,7 @@ textarea {
   justify-content: space-between;
 }
 
-#raw .input_text {
+.tabcontent .input_text {
   width: 580px;
   height: 130px;
 
@@ -93,12 +93,12 @@ textarea {
   align-items: center;
 }
 
-#raw .input_text p {
+.tabcontent .input_text p {
   padding-left: 30px;
 }
 
 /* Style the tab content */
-#raw .tabcontent {
+.tabcontent {
   display: none;
   padding: 6px 12px;
   border-top: none;
@@ -111,7 +111,7 @@ textarea {
 }
 
 /* for loader */
-#loader {
+.loader {
   z-index: 1;
   width: 20px;
   height: 20px;
