@@ -29,6 +29,7 @@
         content="https://master-bert-as-service-showcase-gkswjdzz.endpoint.ainize.ai/static/images/og_img.png">
     <meta property="og:image:secure_url" content="{{ url_for('static', filename='images/og_img.png') }}">
     <meta name="description" itemprop="description" content="Bert-as-service">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/themes/prism-tomorrow.min.css" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg==" crossorigin="anonymous" />
 </head>
 
 <body>
@@ -89,9 +90,9 @@
                     <p1>Code</p1>
                     <div class="box">
                         <div id="code_output" class="input_text">
-                            <p id="code_result">
-                                R = request('')
-                            </p>
+                            <code id="code_result" class="language-python">
+                                requests.post('https://korean-bert-as-service-gkswjdzz.endpoint.ainize.ai/encode', json={"texts":["HERE"],"id":"","is_tokenized":"False"})
+                            </code>
                         </div>
                     </div>
 
@@ -155,6 +156,8 @@
     </div>
 
     <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/prism.min.js" integrity="sha512-WkVkkoB31AoI9DAk6SEEEyacH9etQXKUov4JRRuM1Y681VsTq7jYgrRw06cbP6Io7kPsKx+tLFpH/HXZSZ2YEQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/components/prism-python.min.js" integrity="sha512-EXseTM1JV8e3AonU5PfOUmzbPkUTRm4c4hVxv206gVeWZE/FwzSQBNWrUBaHsN3Idq9k76BEjUlXpluX1UFx6Q==" crossorigin="anonymous"></script>
 </body>
 
 </html>
