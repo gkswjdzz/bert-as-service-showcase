@@ -33,11 +33,13 @@
 
 <body>
     <div id="header">
-        <div class="github" OnClick="location.href='https://github.com/psi1104/stargan-v2'" style="cursor:pointer;">
+        <div class="github" OnClick="location.href='https://github.com/gkswjdzz/bert-as-service'"
+            style="cursor:pointer;">
             <object data="{{ url_for('static', filename='images/github.svg') }}" type="image/svg+xml"></object>
             <div>Github</div>
         </div>
-        <div class="ainize" OnClick="location.href='https://ainize.ai/psi1104/stargan-v2'" style="cursor:pointer;">
+        <div class="ainize" OnClick="location.href='https://ainize.ai/gkswjdzz/bert-as-service'"
+            style="cursor:pointer;">
             <object data="{{ url_for('static', filename='images/ainize.svg') }}" type="image/svg+xml"></object>
             <div>Testing API</div>
         </div>
@@ -62,20 +64,16 @@
 
         <div id="tabs">
             <div class="tab">
-                <button class="btn_medium tablinks" onclick="openTab(event, 'qa')" id="defaultOpen">Q&A</button>
+                <!-- <button class="btn_medium tablinks" onclick="openTab(event, 'qa')" id="defaultOpen">Q&A</button> -->
                 <button class="btn_medium tablinks" onclick="openTab(event, 'raw')">Raw</button>
                 <button class="btn_medium tablinks other" onclick="openTab(event, 'plus')">+</button>
             </div>
 
             <div id="tabcontents">
-                <div id="qa" class="tabcontent">
-                    <h3>QA</h3>
-                    <p>QA ...</p>
-                </div>
-
                 <div id="raw" class="tabcontent">
                     <p1>Let's Try</p1>
                     <div class="box">
+                        <p1>Input</p1>
                         <div class="box inputs">
                             <input id="box_input" class="input_text" value="여기에 단어/문장을 입력해주세요." />
                             <div id="submit" class="btn">
@@ -83,8 +81,8 @@
                                 <div id="loader" style="display: none;"></div>
                             </div>
                         </div>
+                        <p1>Result</p1>
                         <textarea id="box_output" class="input_text" rows="4" cols="50" disabled>
-                            여기에 결과값이 나옵니다.
                         </textarea>
                     </div>
 
@@ -98,18 +96,13 @@
                     </div>
 
                 </div>
-
-                <div id="plus" class="tabcontent">
-                    <h3>+</h3>
-                    <p>++</p>
-                </div>
             </div>
         </div>
     </div>
     </div>
 
     <div class="share">
-        <h2 class="title">Bert-as-service</h2>
+        <h2 class="title">Let’s stay connected!</h2>
         <div class="icons">
             <a class="link to_facebook" href='#' onclick="openSite('fb');">
                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">

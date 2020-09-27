@@ -130,10 +130,10 @@ p2.opacity {
 }
 
 .input_text {
-  background: #808080;
-  opacity: 0.2;
+  background: #484848;
   border-radius: 10px;
-
+  outline: none;
+  border-width: 0;
   color: #FFFFFF;
 }
 
@@ -170,6 +170,11 @@ p2.opacity {
 /* footer */
 
 #footer {
+  /* position: fixed;
+  bottom:0;
+  width:100%;
+  z-index: 1; */
+
   font-size: 12px;
   line-height: 20px;
   font-weight: 600;

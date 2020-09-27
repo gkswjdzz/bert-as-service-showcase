@@ -7,6 +7,20 @@
   justify-content: center;
 }
 
+.share {
+  padding-top: 100px;
+  padding-bottom: 200px;
+}
+
+.input_text {
+  
+  color: #FFFFFF;
+}
+
+textarea {
+  vertical-align:middle;
+}
+
 #tabs {
   display: flex;
   flex-direction: column;
