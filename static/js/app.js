@@ -41,8 +41,8 @@ document.getElementById("submit").onclick = () => {
   const is_tokenized = false
 
   const data = {
-    id: '',
     texts,
+    id: '',
     is_tokenized
   };
 
@@ -70,7 +70,8 @@ document.getElementById("submit").onclick = () => {
       }
       document.getElementById("box_output").value = JSON.stringify(result);
       document.getElementById("code_result").innerText = 
-      `r = requests.post('https://korean-bert-as-service-gkswjdzz.endpoint.ainize.ai/encode', json=${JSON.stringify(data)})`
+      `requests.post('https://korean-bert-as-service-gkswjdzz.endpoint.ainize.ai/encode', json=${JSON.stringify(data)})`
+      Prism.highlightElement(document.getElementById("code_result"));
       
       stopWaiting();
 
