@@ -31,13 +31,13 @@ function openSite(site) {
 }
 
 // Raw tab submit
+const raw = document.getElementById("raw");
+raw.getElementsByClassName("submit")[0].onclick = () => {
+  raw.getElementsByClassName("submit")[0].disabled = true;
 
-document.getElementById("submit").onclick = () => {
-  document.getElementById("submit").disabled = true;
+  waiting(raw);
 
-  waiting();
-
-  const texts = document.getElementById("box_input").value.split('.').filter(text => text);
+  const texts = raw.getElementsByClassName("box_input")[0].value.split('.').filter(text => text);
   const is_tokenized = false
 
   const data = {
@@ -68,31 +68,31 @@ document.getElementById("submit").onclick = () => {
       } else {
         data.is_tokenized = 'False';
       }
-      document.getElementById("box_output").value = JSON.stringify(result);
-      document.getElementById("code_result").innerText = 
+      raw.getElementsByClassName("box_output")[0].value = JSON.stringify(result);
+      raw.getElementsByClassName("code_result")[0].innerText = 
       `requests.post('https://korean-bert-as-service-gkswjdzz.endpoint.ainize.ai/encode', json=${JSON.stringify(data)})`
-      Prism.highlightElement(document.getElementById("code_result"));
+      Prism.highlightElement(raw.getElementsByClassName("code_result")[0]);
       
-      stopWaiting();
+      stopWaiting(raw);
 
-      document.getElementById("submit").disabled = false
+      raw.getElementsByClassName("submit")[0].disabled = false
     })
     .catch(e => {
-      document.getElementById("submit").disabled = false;
-      stopWaiting();
+      raw.getElementsByClassName("submit")[0].disabled = false;
+      stopWaiting(raw);
     })
 }
 
-function waiting() {
-  var spining = document.getElementById("loader");
-  const submit = document.getElementById("submit_text");
+function waiting(tab) {
+  const spining = tab.getElementsByClassName("loader")[0];
+  const submit = tab.getElementsByClassName("submit_text")[0];
   submit.style.display = 'none';
   spining.style.display = 'inline-block';
 }
 
-function stopWaiting() {
-  var spining = document.getElementById("loader");
-  const submit = document.getElementById("submit_text");
+function stopWaiting(tab) {
+  const spining = tab.getElementsByClassName("loader")[0];
+  const submit = tab.getElementsByClassName("submit_text")[0];
   submit.style.display = 'inline-block';
   spining.style.display = "none";
 }
